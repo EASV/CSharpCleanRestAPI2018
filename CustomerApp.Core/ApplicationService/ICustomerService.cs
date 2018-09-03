@@ -11,16 +11,16 @@ namespace CustomerApp.Core.ApplicationService
                                 string lastName,
                                 string address);
 
-        //Create
+        //Create //POST
         Customer CreateCustomer(Customer cust);
-        //Read
+        //Read //GET
         Customer FindCustomerById(int id);
         List<Customer> GetAllCustomers();
         List<Customer> GetAllByFirstName(string name);
-        //Update
+        //Update //PUT
         Customer UpdateCustomer(Customer customerUpdate);
         
-        //Delete
+        //Delete //DELETE
         Customer DeleteCustomer(int id);
     }
 }
