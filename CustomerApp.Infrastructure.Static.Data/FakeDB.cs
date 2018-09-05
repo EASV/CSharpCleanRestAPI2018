@@ -5,7 +5,7 @@ namespace CustomerApp.Infrastructure.Static.Data
 {
     public static class FakeDB
     {
-        public static int id = 1;
+        public static int Id = 1;
         public static readonly List<Customer> Customers = new List<Customer>();
         
     }

@@ -11,6 +11,7 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
             if (FakeDB.Customers.Count >= 1) return;
             var cust1 = new Customer()
             {
+                Id = FakeDB.Id ++,
                 FirstName = "Bob",
                 LastName = "Dylan",
                 Address = "BongoStreet 202"
@@ -19,6 +20,7 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
 
             var cust2 = new Customer()
             {
+                Id = FakeDB.Id ++,
                 FirstName = "Lars",
                 LastName = "Bilde",
                 Address = "Ostestrasse 202"
@@ -28,7 +30,7 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
         
         public Customer Create(Customer customer)
         {
-            customer.Id = FakeDB.id++;
+            customer.Id = FakeDB.Id++;
             FakeDB.Customers.Add(customer);
             return customer;
         }
