@@ -31,6 +31,7 @@ namespace EASV.CustomerRestApi.Controllers
         }
 
         // POST api/customers
+        [HttpPost]
         public ActionResult<Customer> Post([FromBody] Customer customer)
         {
             if (string.IsNullOrEmpty(customer.FirstName))
@@ -46,10 +47,16 @@ namespace EASV.CustomerRestApi.Controllers
             return _customerService.CreateCustomer(customer);
         }
         
-        // PUT api/customers/5
+        // PUT api/customers/5 -- Update
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<Customer> Put(int id, [FromBody] Customer customer)
         {
+            if (id < 1 || id != customer.Id)
+            {
+                return BadRequest("Parameter Id and customer ID must be the same");
+            }
+
+            return Ok();
         }
 
         // DELETE api/customers/5
