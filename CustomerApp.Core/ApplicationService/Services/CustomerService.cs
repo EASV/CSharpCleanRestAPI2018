@@ -9,16 +9,13 @@ namespace CustomerApp.Core.ApplicationService.Services
     public class CustomerService: ICustomerService
     {
         readonly ICustomerRepository _customerRepo;
-        private IAddressRepository _addressRepository;
 
-        public CustomerService(ICustomerRepository customerRepository,
-            IAddressRepository addressRepository)
+        public CustomerService(ICustomerRepository customerRepository)
         {
             _customerRepo = customerRepository;
-            _addressRepository = addressRepository;
         }
 
-        public Customer NewCustomer(string firstName, string lastName, Address address)
+        public Customer NewCustomer(string firstName, string lastName, string address)
         {
             var cust = new Customer()
             {
@@ -41,16 +38,6 @@ namespace CustomerApp.Core.ApplicationService.Services
         }
 
         public List<Customer> GetAllCustomers()
-        {
-            var list = _customerRepo.ReadAll().ToList();
-            foreach (var customer in list)
-            {
-                customer.Address = 
-                    _addressRepository.ReadyById(customer.Address.Id);
-            }
-            return list;
-        }
-        public List<Customer> GetAllCustomersWithoutAddresses()
         {
             return _customerRepo.ReadAll().ToList();
         }

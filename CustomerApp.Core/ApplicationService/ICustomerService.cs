@@ -9,7 +9,7 @@ namespace CustomerApp.Core.ApplicationService
         //New Customer
         Customer NewCustomer(string firstName,
                                 string lastName,
-                                Address address);
+                                string address);
 
         //Create //POST
         Customer CreateCustomer(Customer cust);

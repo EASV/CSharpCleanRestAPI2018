@@ -68,7 +68,7 @@ namespace ConsoleApp2017
                         var firstName = AskQuestion("Firstname: ");
                         var lastName = AskQuestion("Lastname: ");
                         var address = AskQuestion("Address: ");
-                        var customer = _customerService.NewCustomer(firstName, lastName, new Address());
+                        var customer = _customerService.NewCustomer(firstName, lastName, address);
                         _customerService.CreateCustomer(customer);
                         break;
                     case 3:
@@ -87,7 +87,7 @@ namespace ConsoleApp2017
                             Id = idForEdit,
                             FirstName = newFirstName,
                             LastName = newLastName,
-                           // Address = newAddress
+                            Address = newAddress
                         });
                         break;
                     default:
@@ -167,6 +167,7 @@ namespace ConsoleApp2017
             {
                 FirstName = "Bob",
                 LastName = "Dylan",
+                Address = "BongoStreet 202"
             };
             _customerService.CreateCustomer(cust1);
 
@@ -174,6 +175,7 @@ namespace ConsoleApp2017
             {
                 FirstName = "Lars",
                 LastName = "Bilde",
+                Address = "Ostestrasse 202"
             };
             _customerService.CreateCustomer(cust2);
         }

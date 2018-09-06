@@ -23,9 +23,7 @@ namespace EASV.CustomerRestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
-            services.AddScoped<IAddressService, AddressService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
