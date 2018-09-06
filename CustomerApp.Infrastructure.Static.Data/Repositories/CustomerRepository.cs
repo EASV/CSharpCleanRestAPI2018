@@ -14,7 +14,8 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
                 Id = FakeDB.Id ++,
                 FirstName = "Bob",
                 LastName = "Dylan",
-                Address = "BongoStreet 202"
+                Address = new Address(){Id = 1}
+                
             };
             FakeDB.Customers.Add(cust1);
 
@@ -23,7 +24,8 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
                 Id = FakeDB.Id ++,
                 FirstName = "Lars",
                 LastName = "Bilde",
-                Address = "Ostestrasse 202"
+                Address = new Address(){Id = 1}
+               
             };
             FakeDB.Customers.Add(cust2);
         }

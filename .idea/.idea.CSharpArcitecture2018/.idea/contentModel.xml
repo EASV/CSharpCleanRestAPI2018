@@ -22,14 +22,17 @@
       <e p="CSharpArcitecture2018.sln" t="IncludeFlat" />
       <e p="CustomerApp.Core" t="IncludeRecursive">
         <e p="ApplicationService" t="Include">
+          <e p="IAddressService.cs" t="Include" />
           <e p="ICustomerService.cs" t="Include" />
           <e p="Services" t="Include">
+            <e p="AddressService.cs" t="Include" />
             <e p="CustomerService.cs" t="Include" />
           </e>
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="CustomerApp.Core.csproj" t="IncludeRecursive" />
         <e p="DomainService" t="Include">
+          <e p="IAddressRepository.cs" t="Include" />
           <e p="ICustomerRepository.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
@@ -41,6 +44,7 @@
         </e>
       </e>
       <e p="CustomerApp.Core.Entity" t="IncludeRecursive">
+        <e p="Address.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="Customer.cs" t="Include" />
         <e p="CustomerApp.Core.Entity.csproj" t="IncludeRecursive" />
@@ -64,6 +68,7 @@
           </e>
         </e>
         <e p="Repositories" t="Include">
+          <e p="AddressRepository.cs" t="Include" />
           <e p="CustomerRepository.cs" t="Include" />
         </e>
       </e>
