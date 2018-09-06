@@ -31,11 +31,21 @@ namespace EASV.CustomerRestApi.Controllers
         }
 
         // POST api/customers
-        [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<Customer> Post([FromBody] Customer customer)
         {
-        }
+            if (string.IsNullOrEmpty(customer.FirstName))
+            {
+                return BadRequest("Firstname is Required for Creating Customer");
+            }
 
+            if (string.IsNullOrEmpty(customer.LastName))
+            {
+                return BadRequest("LastName is Required for Creating Customer");
+            }
+            //return StatusCode(503, "Horrible Error CALL Tech Support");
+            return _customerService.CreateCustomer(customer);
+        }
+        
         // PUT api/customers/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
