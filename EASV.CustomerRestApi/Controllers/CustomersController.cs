@@ -16,21 +16,23 @@ namespace EASV.CustomerRestApi.Controllers
             _customerService = customerService;
         }
         
-        // GET api/customers
+        // GET api/customers -- READ All
         [HttpGet]
         public ActionResult<IEnumerable<Customer>> Get()
         {
             return _customerService.GetAllCustomers();
         }
 
-        // GET api/customers/5
+        // GET api/customers/5 -- READ By Id
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Customer> Get(int id)
         {
-            return "value";
+            if (id < 1) return BadRequest("Id must be greater then 0");
+            
+            return _customerService.FindCustomerById(id);
         }
 
-        // POST api/customers
+        // POST api/customers -- CREATE
         [HttpPost]
         public ActionResult<Customer> Post([FromBody] Customer customer)
         {
@@ -56,13 +58,20 @@ namespace EASV.CustomerRestApi.Controllers
                 return BadRequest("Parameter Id and customer ID must be the same");
             }
 
-            return Ok();
+            return Ok(_customerService.UpdateCustomer(customer));
         }
 
         // DELETE api/customers/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<Customer> Delete(int id)
         {
+            var customer = _customerService.DeleteCustomer(id);
+            if (customer == null)
+            {
+                return StatusCode(404, "Did not find Customer with ID " + id);
+            }
+
+            return Ok($"Customer with Id: {id} is Deleted");
         }
     }
 }
