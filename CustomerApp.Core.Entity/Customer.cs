@@ -1,4 +1,6 @@
-﻿namespace CustomerApp.Core.Entity
+﻿using System.Collections.Generic;
+
+namespace CustomerApp.Core.Entity
 {
     public class Customer
     {
@@ -9,5 +11,7 @@
         public string LastName { get; set; }
 
         public string Address { get; set; }
+
+        public List<Order> Orders { get; set; }
     }
 }

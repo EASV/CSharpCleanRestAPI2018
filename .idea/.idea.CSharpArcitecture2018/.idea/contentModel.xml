@@ -23,14 +23,17 @@
       <e p="CustomerApp.Core" t="IncludeRecursive">
         <e p="ApplicationService" t="Include">
           <e p="ICustomerService.cs" t="Include" />
+          <e p="IOrderService.cs" t="Include" />
           <e p="Services" t="Include">
             <e p="CustomerService.cs" t="Include" />
+            <e p="OrderService.cs" t="Include" />
           </e>
         </e>
         <e p="bin" t="ExcludeRecursive" />
         <e p="CustomerApp.Core.csproj" t="IncludeRecursive" />
         <e p="DomainService" t="Include">
           <e p="ICustomerRepository.cs" t="Include" />
+          <e p="IOrderRepository.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -51,6 +54,7 @@
             </e>
           </e>
         </e>
+        <e p="Order.cs" t="Include" />
       </e>
       <e p="CustomerApp.Infrastructure.Static.Data" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
@@ -65,6 +69,7 @@
         </e>
         <e p="Repositories" t="Include">
           <e p="CustomerRepository.cs" t="Include" />
+          <e p="OrderRepository.cs" t="Include" />
         </e>
       </e>
       <e p="EASV.CustomerRestApi" t="IncludeRecursive">
@@ -73,6 +78,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Controllers" t="Include">
           <e p="CustomersController.cs" t="Include" />
+          <e p="OrdersController.cs" t="Include" />
         </e>
         <e p="EASV.CustomerRestApi.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
