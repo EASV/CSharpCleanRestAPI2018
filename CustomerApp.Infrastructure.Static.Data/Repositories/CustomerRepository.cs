@@ -55,25 +55,22 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
         //Remove later when we use UOW
         public Customer Update(Customer customerUpdate)
         {
-            var customerFromDB = this.ReadyById(customerUpdate.Id);
-            if(customerFromDB != null) {
-                customerFromDB.FirstName = customerUpdate.FirstName;
-                customerFromDB.LastName = customerUpdate.LastName;
-                customerFromDB.Address = customerUpdate.Address;
-                return customerFromDB;
-            }
-            return null;
+            var customerFromDB = ReadyById(customerUpdate.Id);
+            if (customerFromDB == null) return null;
+            
+            customerFromDB.FirstName = customerUpdate.FirstName;
+            customerFromDB.LastName = customerUpdate.LastName;
+            customerFromDB.Address = customerUpdate.Address;
+            return customerFromDB;
         }
 
         public Customer Delete(int id)
         {
-            var customerFound = this.ReadyById(id);
-            if (customerFound != null)
-            {
-                FakeDB.Customers.Remove(customerFound);
-                return customerFound;
-            }
-            return null;
+            var customerFound = ReadyById(id);
+            if (customerFound == null) return null;
+            
+            FakeDB.Customers.Remove(customerFound);
+            return customerFound;
         }
 
     }
