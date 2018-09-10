@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using CustomerApp.Core.DomainService;
 using CustomerApp.Core.Entity;
 
@@ -42,14 +43,16 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
 
         public Customer ReadyById(int id)
         {
-            foreach (var customer in FakeDB.Customers)
-            {
-                if (customer.Id == id)
+            return FakeDB.Customers.
+                Select(c => new Customer()
                 {
-                    return customer;
-                }
-            }
-            return null;
+                    Id = c.Id,
+                    FirstName = c.FirstName,
+                    Address = c.Address,
+                    LastName = c.LastName
+                }).
+                FirstOrDefault(c => c.Id == id);
+            
         }
 
         //Remove later when we use UOW
