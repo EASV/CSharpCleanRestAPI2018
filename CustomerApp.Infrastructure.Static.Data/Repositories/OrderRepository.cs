@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CustomerApp.Core.DomainService;
@@ -7,6 +8,30 @@ namespace CustomerApp.Infrastructure.Static.Data.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
+        public OrderRepository()
+        {
+            if (FakeDB.Orders.Count > 0) return;
+            
+            var order1 = new Order()
+            {
+                Id = FakeDB.OrderId++,
+                DeliveryDate = DateTime.Now.AddMonths(2),
+                OrderDate = DateTime.Now.AddMonths(-1),
+                Customer = new Customer(){Id = 1}
+            };
+            FakeDB.Orders.Add(order1);
+            
+            var order2 = new Order()
+            {
+                Id = FakeDB.OrderId++,
+                DeliveryDate = DateTime.Now.AddMonths(1),
+                OrderDate = DateTime.Now.AddDays(-2),
+                Customer = new Customer(){Id = 1}
+            };
+            FakeDB.Orders.Add(order2);
+            
+        }
+        
         public Order Create(Order order)
         {
             order.Id = FakeDB.OrderId++;

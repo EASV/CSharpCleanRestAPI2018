@@ -20,6 +20,7 @@ namespace EASV.CustomerRestApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Customer>> Get()
         {
+            ///Customers with all there orders? NO
             return _customerService.GetAllCustomers();
         }
 
