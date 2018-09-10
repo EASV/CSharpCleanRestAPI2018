@@ -9,10 +9,13 @@ namespace CustomerApp.Core.ApplicationService.Services
     public class CustomerService: ICustomerService
     {
         readonly ICustomerRepository _customerRepo;
+        readonly IOrderRepository _orderRepo;
 
-        public CustomerService(ICustomerRepository customerRepository)
+        public CustomerService(ICustomerRepository customerRepository,
+            IOrderRepository orderRepository)
         {
             _customerRepo = customerRepository;
+            _orderRepo = orderRepository;
         }
 
         public Customer NewCustomer(string firstName, string lastName, string address)
@@ -35,6 +38,15 @@ namespace CustomerApp.Core.ApplicationService.Services
         public Customer FindCustomerById(int id)
         {
             return _customerRepo.ReadyById(id);
+        }
+
+        public Customer FindCustomerByIdIncludeOrders(int id)
+        {
+            var customer = _customerRepo.ReadyById(id);
+            customer.Orders = _orderRepo.ReadAll()
+                .Where(order => order.Customer.Id == customer.Id)
+                .ToList();
+            return customer;
         }
 
         public List<Customer> GetAllCustomers()
