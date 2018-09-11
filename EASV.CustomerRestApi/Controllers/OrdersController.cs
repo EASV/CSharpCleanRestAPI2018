@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CustomerApp.Core.ApplicationService;
 using CustomerApp.Core.Entity;
@@ -20,7 +21,7 @@ namespace EASV.CustomerRestApi.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Order>> Get()
         {
-            return Ok();
+            return Ok(_orderService.GetAllOrders());
         }
 
         // GET api/orders/5 -- READ By Id
@@ -36,7 +37,15 @@ namespace EASV.CustomerRestApi.Controllers
         [HttpPost]
         public ActionResult<Order> Post([FromBody] Order order)
         {
-            return Ok();
+            try
+            {
+                return Ok(_orderService.CreateOrder(order));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
         
         // PUT api/orders/5 -- Update
